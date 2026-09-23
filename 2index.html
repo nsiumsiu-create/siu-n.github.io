@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The SometimesLl HP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================
+       Design Tokens (Modern Minimal & Monotone)
+       ========================================= */
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #fbfbfb;
+      --border: #eaeaea;
+      --border-dark: #111111;
+      --text: #111111;
+      --text-muted: #737373;
+      --text-subtle: #a3a3a3;
+      --font-base: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-width: 680px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-base);
+      line-height: 1.8;
+      letter-spacing: -0.015em;
+      padding: 5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      flex-direction: column;
+      gap: 4.5rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    /* =========================================
+       Header / Identity
+       ========================================= */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .creator-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .band-status {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+      font-style: italic;
+    }
+
+    .hero-name {
+      font-size: 2.25rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    /* Statement / Bio */
+    .statement-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-left: 1.25rem;
+      border-left: 1.5px solid var(--border-dark);
+      margin: 0.5rem 0;
+    }
+
+    .statement-p {
+      color: #262626;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      font-weight: 300;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    /* Links / Navigation */
+    .links-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-top: 0.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.825rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-link:hover {
+      border-bottom-color: var(--border-dark);
+      opacity: 0.7;
+    }
+
+    /* =========================================
+       Works & Archives (Minimalist List/Card)
+       ========================================= */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-counter {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      font-feature-settings: "tnum";
+    }
+
+    .works-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .work-item:first-child {
+      padding-top: 0.5rem;
+    }
+
+    .work-item:hover {
+      padding-left: 0.5rem;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .work-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .work-arrow {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .work-item:hover .work-arrow {
+      transform: translate(2px, -2px);
+      color: var(--text);
+    }
+
+    .work-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .work-meta {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .work-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
+
+    /* =========================================
+       Footer
+       ========================================= */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 2.5rem;
+      color: var(--text-subtle);
+      font-size: 0.75rem;
+      letter-spacing: 0.02em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* =========================================
+       Mobile Optimization
+       ========================================= */
+    @media (max-width: 640px) {
+      body {
+        padding: 3rem 1.25rem;
+      }
+      .container {
+        gap: 3.5rem;
+      }
+      .hero-name {
+        font-size: 1.9rem;
+      }
+      .statement-p {
+        word-break: normal;
+      }
+      .links-group {
+        gap: 1rem;
+      }
+      footer {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header / Concept -->
+    <header class="hero">
+      <div class="hero-meta">
+        <span class="creator-tag">Developer / Creator : SIU.N</span>
+        <span class="band-status">Fictional Archive</span>
+      </div>
+
+      <h1 class="hero-name">The SometimesLl</h1>
+
+      <!-- Concept Statement -->
+      <div class="statement-box">
+        <p class="statement-p">
+          The SometimesLlは、孤独や違和感、人間らしさをテーマにした架空のオルタナティブロックバンド。
+        </p>
+        <p class="statement-p">
+          冷たい世界の中で、それでも誰かと繋がろうとする感覚を、音楽と映像にしている。
+        </p>
+      </div>
+
+      <!-- Links -->
+      <nav class="links-group">
+        <a href="https://github.com/ユーザー名" class="nav-link" target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+        <a href="https://x.com/ユーザー名" class="nav-link" target="_blank" rel="noopener noreferrer">
+          X (Twitter) ↗
+        </a>
+        <a href="https://youtube.com" class="nav-link" target="_blank" rel="noopener noreferrer">
+          YouTube / Video ↗
+        </a>
+        <a href="mailto:your-email@example.com" class="nav-link">
+          Contact ↗
+        </a>
+      </nav>
+    </header>
+
+    <!-- Works & Releases -->
+    <section>
+      <div class="section-header">
+        <span class="section-title">Selected Works</span>
+        <span class="section-counter">01 — 03</span>
+      </div>
+
+      <div class="works-list">
+
+        <!-- Item 01 -->
+        <a href="https://example.com/track-1" class="work-item" target="_blank" rel="noopener noreferrer">
+          <div class="work-header">
+            <h2 class="work-title">entrance</h2>
+            <span class="work-arrow">↗</span>
+          </div>
+          <p class="work-desc">
+            夜の冷気と都市の街灯を背景にしたオルタナティブ・トラック。楽曲制作およびビジュアルコンセプト。
+          </p>
+          <div class="work-meta">
+            <span class="work-category">Music / Concept</span>
+            <span class="work-category">Logic Pro</span>
+          </div>
+        </a>
+
+        <!-- Item 02 -->
+        <a href="https://example.com/project-2" class="work-item" target="_blank" rel="noopener noreferrer">
+          <div class="work-header">
+            <h2 class="work-title">Visual Archive / Photography</h2>
+            <span class="work-arrow">↗</span>
+          </div>
+          <p class="work-desc">
+            静寂や人工物の質感を切り取ったストリートスナップと、映像作品のカラーグレーディング素材。
+          </p>
+          <div class="work-meta">
+            <span class="work-category">Visual / Photo</span>
+          </div>
+        </a>
+
+        <!-- Item 03 -->
+        <a href="https://example.com/project-3" class="work-item" target="_blank" rel="noopener noreferrer">
+          <div class="work-header">
+            <h2 class="work-title">Web & Interface System</h2>
+            <span class="work-arrow">↗</span>
+          </div>
+          <p class="work-desc">
+            ミニマリズムと機能性を両立したWebサイトやインタラクティブツールの実装プロジェクト。
+          </p>
+          <div class="work-meta">
+            <span class="work-category">Development</span>
+            <span class="work-category">GitHub Pages</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>&copy; 2026 The SometimesLl / SIU.N</span>
+      <span>All rights reserved.</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
